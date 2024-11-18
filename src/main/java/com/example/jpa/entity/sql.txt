@@ -1,0 +1,93 @@
+-- Insert customers
+
+INSERT INTO Customer (username, password, customerName, age, rating, occupation, reserves) VALUES
+
+('user1', 'password1', 'User 1', 30, 'Gold', 'Developer', 0),
+
+('user2', 'password2', 'User 2', 25, 'Silver', 'Designer', 0),
+
+('user3', 'password3', 'User 3', 35, 'Bronze', 'Manager', 0);
+
+
+
+-- Insert books
+
+INSERT INTO Book (title, price, author, page) VALUES
+
+('Book 1', 10, 'Author 1', 100),
+
+('Book 2', 20, 'Author 2', 200),
+
+('Book 3', 30, 'Author 3', 300);
+
+
+
+-- Insert book images
+
+INSERT INTO BookImage (book_id, type, path) VALUES
+
+(1, 1, '/path/to/image1'),
+
+(1, 2, '/path/to/image2'),
+
+(1, 3, '/path/to/image3'),
+
+(2, 1, '/path/to/image4'),
+
+(2, 2, '/path/to/image5'),
+
+(2, 3, '/path/to/image6'),
+
+(3, 1, '/path/to/image7'),
+
+(3, 2, '/path/to/image8'),
+
+(3, 3, '/path/to/image9');
+
+
+
+-- Insert reviews
+
+INSERT INTO Review (customer_id, book_id, cost, content, createdat) VALUES
+
+(1, 1, 4, 'Great book!', NOW()),
+
+(1, 2, 5, 'Amazing read!', NOW()),
+
+(1, 3, 3, 'Good content.', NOW()),
+
+(2, 1, 4, 'Enjoyed it!', NOW()),
+
+(2, 2, 5, 'Highly recommended.', NOW()),
+
+(2, 3, 4, 'Interesting storyline.', NOW()),
+
+(3, 1, 3, 'Average.', NOW()),
+
+(3, 2, 4, 'Well-written.', NOW()),
+
+(3, 3, 5, 'Fantastic!', NOW());
+
+
+
+-- Insert carts
+
+INSERT INTO Cart (customer_id, book_id, quantity, cartdate) VALUES
+
+(1, 1, 1, NOW()),
+
+(1, 2, 2, NOW()),
+
+(1, 3, 3, NOW()),
+
+(2, 1, 2, NOW()),
+
+(2, 2, 3, NOW()),
+
+(2, 3, 1, NOW()),
+
+(3, 1, 3, NOW()),
+
+(3, 2, 1, NOW()),
+
+(3, 3, 2, NOW());

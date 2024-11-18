@@ -1,5 +1,6 @@
 package com.example.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,9 +44,11 @@ public class Customer { // 고객(Object) -> ORM -> TABLE : Review(리뷰)
     // fetch = FetchType.EAGER : 즉시로딩 - 메모리를 비효율적 사용
     // fetch = FetchType.LAZY : 지연로딩 - 메모리 절약, 참조순환(N+1 : 데이터베이스참조가 계속 발생)
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Review> reviews; // 오브젝트는 컬럼으로 만들어지지 않는다.
 
     @OneToMany(mappedBy ="customer", cascade = CascadeType.ALL )
+    @JsonIgnore
     private List<Cart> carts;
 }
 /*

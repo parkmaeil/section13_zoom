@@ -25,8 +25,10 @@ public class Book {
     private List<Review> reviews;
 
     // 이첵에대한 이미지 정보를 함께 가져와야한다.
-    @OneToMany(mappedBy ="book", cascade = CascadeType.ALL)
-    private List<BookImage> bookImages;
+    //@OneToMany(mappedBy ="book", cascade = CascadeType.ALL)
+    //private List<BookImage> bookImages;
+    @OneToMany(mappedBy ="book" , cascade = CascadeType.ALL)
+     private List<BookImage> bookImages;
 
     @OneToMany(mappedBy ="book", cascade = CascadeType.ALL)
     private List<Cart> carts;

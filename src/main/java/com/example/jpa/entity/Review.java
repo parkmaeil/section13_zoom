@@ -31,7 +31,9 @@ public class Review {
 
     private int cost; // 평점
     private String content; //  내용
-    private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt=new Date();
 }
 /*
     create table Review (

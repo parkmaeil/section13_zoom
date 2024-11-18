@@ -24,8 +24,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // 3. JPQL(사용자 정의 쿼리) : Java Persistence Query Language
     // - 1. Entity(Object)를 기준으로 쿼리 만들기
     // - 2. Table을 기준으로 쿼리 만들기(nativeQuery)
-    //@Query("select cus from Customer cus where cus.rating=:rating")
-    @Query(value = "select * from customer where rating=?1", nativeQuery = true)
+    @Query("select cus from Customer cus where cus.rating=:rating")
+    //@Query(value = "select * from customer where rating=?1", nativeQuery = true)
     public List<Customer> getRating(String rating); // vip, gold, silver
 
     @Query(value = "select * from customer c where c.username=?1 and c.password=?2", nativeQuery = true)

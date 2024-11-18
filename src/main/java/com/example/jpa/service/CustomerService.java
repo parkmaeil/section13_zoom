@@ -41,4 +41,9 @@ public class CustomerService {
                 .orElseThrow(()-> new RuntimeException("Customer not found")); // SQL
           return customer.getReviews(); // SQL : customer(id : 1)<--JOIN-->Review(customer_id(3))
     }
+
+    public Customer authenticate(String username, String password) {
+        return customerRepository.findByUsernameAndPassword(username, password);
+    }
+
 }
