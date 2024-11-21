@@ -1,14 +1,13 @@
 package com.example.jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cart {
@@ -19,15 +18,26 @@ public class Cart {
     // 고객정보(FK)
     @ManyToOne
     @JoinColumn(name = "customer_id" , nullable = false)
-     private Customer customer;
+     private Customer customer;  // Customer의 pk인 id
 
      // 책의정보(FK)
      @ManyToOne
      @JoinColumn(name = "book_id" , nullable = false)
-    private Book book;
+    private Book book; // book의 PK인 id
 
-    private int quantity; //  수량
+    private int quantity; //  수량(0)
     private Date cartDate; // 구매일자
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", book=" + book +
+                ", quantity=" + quantity +
+                ", cartDate=" + cartDate +
+                '}';
+    }
 }
 /*
  create table Cart (
