@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,5 +36,22 @@ public class CartController {
         return "redirect:/books"; // Redirect to the book list page after adding to cart
     }
 
+    @GetMapping("/cart/delete/{id}")
+    public String cartDelete(@PathVariable Long id){
+        Cart cart=cartService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cart not found")); ;
+        cartService.cartDelete(cart);
+        // cart.getCustomer().getId()
+        //return "redirect:/books";
+        return "redirect:/cart/list?customerId="+cart.getCustomer().getId();
+    }
 
+    @GetMapping("/cart/edit/{id}/{quantity}")
+    public String quantityUpdate(@PathVariable Long id, @PathVariable int quantity){
+        Cart cart=cartService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cart not found")); ;
+        cart.setQuantity(quantity);
+        cartService.suUpdate(cart); // 수정
+        return "redirect:/cart/list?customerId="+cart.getCustomer().getId();
+    }
 }

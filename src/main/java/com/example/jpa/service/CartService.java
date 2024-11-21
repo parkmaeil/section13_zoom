@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartService {
@@ -45,7 +46,7 @@ public class CartService {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found")); // Handle if customer is not found
 
-        Cart dbCart=cartRepository.findByCustomerAndBook(customerId, bookId);
+        Cart dbCart=cartRepository.findByCustomerAndBook(bookId, customerId);
         if(dbCart!=null) {
              System.out.println(dbCart.getId());
              // 업데이트....
@@ -61,4 +62,17 @@ public class CartService {
             cartRepository.save(cart); // insert
         }
     }
+    public Optional<Cart> findById(Long id){
+        return cartRepository.findById(id);
+    }
+
+    public void cartDelete(Cart cart){
+        cartRepository.delete(cart); // id
+    }
+
+    public void suUpdate(Cart cart){
+        cartRepository.save(cart); //
+    }
+
+
 }
